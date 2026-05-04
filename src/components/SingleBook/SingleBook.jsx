@@ -1,12 +1,14 @@
 import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 import './SingleBook.css';
+import CommentArea from '../CommentArea/CommentArea';
 
 const SingleBook = (props) => {
 
     const [selected, setSelected] = useState(false)
 
     return (
+        <>
         <Card
             className={`book-card ${selected ? "selected" : ""}`}
         >
@@ -21,6 +23,10 @@ const SingleBook = (props) => {
                 <Card.Text className="book-price">{props.price} €</Card.Text>
             </Card.Body>
         </Card>
+
+        {selected && <CommentArea asin={props.asin} />}
+        
+        </>
     )
 }
 

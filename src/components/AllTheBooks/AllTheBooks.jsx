@@ -33,6 +33,7 @@ const AllTheBooks = () => {
                                 img={book.img}
                                 title={book.title}
                                 price={book.price}
+                                asin={book.asin}
                             />
                         </Col>
                     ))
