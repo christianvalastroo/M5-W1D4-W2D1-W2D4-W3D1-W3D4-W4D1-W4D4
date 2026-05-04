@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import CommentsList from "../CommentList/CommentList"
+import AddComment from "../AddComment/AddComment"
 
 const CommentArea = ({ asin }) => {
 
@@ -25,6 +26,8 @@ const CommentArea = ({ asin }) => {
             <h5>Recensioni del libro</h5>
 
             <CommentsList comments={comments} />
+
+            <AddComment asin={asin} />
             
         </div>
     )
