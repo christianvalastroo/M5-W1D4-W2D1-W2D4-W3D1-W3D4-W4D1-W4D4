@@ -25,7 +25,7 @@ const CommentArea = ({ asin }) => {
     }, [asin])
 
     return (
-        <div>
+        <div className="comment-area">
             <h5>Recensioni del libro</h5>
 
             <CommentsList comments={comments} refreshComments={fetchComments} />
