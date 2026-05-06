@@ -6,7 +6,7 @@ const SingleComment = ({ comment, refreshComments }) => {
         fetch(`https://striveschool-api.herokuapp.com/api/comments/${comment._id}`, {
             method: "DELETE",
             headers: {
-                Authorization: ``
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OWQ3ZWEyYzg5ODA5OTAwMTU1M2FlZWUiLCJpYXQiOjE3NzU3NTc4NzYsImV4cCI6MTc3Njk2NzQ3Nn0.WL9K39iwryMdnCmRKEEv7xT9vPsUHA0cv7j0LAo1MHg`
             }
         })
             .then((res) => {
