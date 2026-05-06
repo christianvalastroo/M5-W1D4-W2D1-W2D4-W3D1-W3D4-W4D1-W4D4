@@ -11,6 +11,10 @@ Piccola applicazione realizzata con **React + Vite** per mostrare un catalogo di
 - Un messaggio di avviso quando la ricerca non trova risultati
 - Un componente **SingleBook** per visualizzare ogni libro come card
 - Card selezionabili con click sulla copertina
+- Un'area commenti collegata al libro selezionato
+- Recupero delle recensioni tramite API esterna
+- Aggiunta di nuove recensioni con testo e valutazione
+- Eliminazione delle recensioni esistenti
 - Un **footer** che rimane in basso quando la pagina ha poco contenuto
 - L'integrazione dei dati dei libri da file **JSON**
 
@@ -25,10 +29,14 @@ src/
 │   ├── romance.json
 │   └── scifi.json
 ├── components/
+│   ├── AddComment/
 │   ├── AllTheBooks/
+│   ├── CommentArea/
+│   ├── CommentList/
 │   ├── MyFooter.jsx/
 │   ├── MyNav.jsx/
 │   ├── SingleBook/
+│   ├── SingleComment/
 │   └── Welcome/
 ├── App.css
 ├── App.jsx
@@ -44,6 +52,7 @@ src/
 - **React-Bootstrap**
 - **JavaScript**
 - **JSON**
+- **Strive School Books API**
 
 ## 📖 Componenti principali
 
@@ -63,10 +72,32 @@ Riceve un libro tramite `props` e mostra:
 - titolo
 - prezzo
 
-La card può essere selezionata cliccando sulla copertina.
+La card può essere selezionata cliccando sulla copertina. Quando un libro viene selezionato, mostra il componente `CommentArea` collegato all'`asin` del libro.
+
+### `CommentArea`
+Gestisce lo stato delle recensioni del libro selezionato. Recupera i commenti dall'API usando l'`asin` ricevuto da `SingleBook` e passa i dati a `CommentList` e `AddComment`.
+
+### `CommentList`
+Riceve l'array dei commenti e renderizza un componente `SingleComment` per ogni recensione.
+
+### `SingleComment`
+Mostra il testo della recensione, il voto e il pulsante per eliminare il commento. Dopo l'eliminazione richiama la funzione di refresh per aggiornare la lista.
+
+### `AddComment`
+Contiene il form per inserire una nuova recensione. Permette di scrivere il commento, scegliere un voto da 1 a 5 stelle e inviare i dati all'API.
 
 ### `MyFooter`
 Mostra il footer finale della pagina. Il layout principale fa in modo che resti in basso quando il contenuto è poco.
+
+## 🌐 API commenti
+
+L'app usa le API di Strive School per leggere, creare ed eliminare commenti:
+
+- `GET /api/books/:asin/comments/` per recuperare le recensioni di un libro
+- `POST /api/comments` per aggiungere una nuova recensione
+- `DELETE /api/comments/:commentId` per eliminare una recensione
+
+Le richieste usano l'header `Authorization` con token `Bearer`.
 
 ## 🚀 Come avviare il progetto
 
@@ -96,6 +127,9 @@ L'obiettivo è costruire una piccola interfaccia React suddivisa in componenti, 
 - usare file JSON come sorgente dati
 - creare layout responsive con React-Bootstrap
 - filtrare una lista in base all'input dell'utente
+- usare `useEffect` per caricare dati quando cambia il libro selezionato
+- collegare l'app a un'API esterna con `fetch`
+- gestire operazioni `GET`, `POST` e `DELETE`
 
 ## 🔍 Stato attuale
 
@@ -107,4 +141,7 @@ Al momento l'app:
 - permette di cercare un libro per titolo
 - mostra un alert se non ci sono risultati
 - permette di selezionare una card
+- mostra le recensioni del libro selezionato
+- permette di aggiungere una recensione
+- permette di eliminare una recensione
 - mostra il footer in fondo alla pagina
