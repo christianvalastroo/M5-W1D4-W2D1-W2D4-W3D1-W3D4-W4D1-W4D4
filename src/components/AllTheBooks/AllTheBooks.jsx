@@ -7,8 +7,10 @@ import { useState } from "react"
 
 const AllTheBooks = ({ search }) => {
 
+    // Salvo l'asin del libro selezionato per caricare le sue recensioni.
     const [selected, setSelected] = useState(null)
 
+    // Mostro solo i libri che corrispondono alla ricerca.
     const filteredBooks = fantasy.filter((book) =>
         book.title.toLowerCase().includes(search.toLowerCase())
     )
