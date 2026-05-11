@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react"
 import CommentsList from "../CommentList/CommentList"
 import AddComment from "../AddComment/AddComment"
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner"
 import "./CommentArea.css"
 
 const CommentArea = ({ selected }) => {
     const [comments, setComments] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     const fetchComments = () => {
         if (!selected) return
+
+        setIsLoading(true)
 
         fetch(`https://striveschool-api.herokuapp.com/api/comments/${selected}`, {
             headers: {
@@ -19,6 +23,7 @@ const CommentArea = ({ selected }) => {
                 setComments(data)
             })
             .catch((err) => console.log(err))
+            .finally(() => setIsLoading(false))
     }
 
     useEffect(() => {
@@ -31,6 +36,8 @@ const CommentArea = ({ selected }) => {
 
             {!selected ? (
                 <p>Seleziona un libro per vedere le recensioni</p>
+            ) : isLoading ? (
+                <LoadingSpinner />
             ) : (
                 <>
                     <CommentsList
