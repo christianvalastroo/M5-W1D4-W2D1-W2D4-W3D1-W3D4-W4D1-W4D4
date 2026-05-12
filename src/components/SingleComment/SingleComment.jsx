@@ -1,7 +1,9 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { ThemeHome } from "../../context/ThemeHome/ThemeHome"
 import "./SingleComment.css"
 
 const SingleComment = ({ comment, refreshComments }) => {
+    const { theme } = useContext(ThemeHome)
     const [isEditing, setIsEditing] = useState(false)
     const [editedComment, setEditedComment] = useState({
         comment: comment.comment,
@@ -59,7 +61,7 @@ const SingleComment = ({ comment, refreshComments }) => {
     }
 
     return (
-        <div className="single-comment">
+        <div className={`single-comment ${theme === "dark" ? "single-comment-dark" : "single-comment-light"}`}>
             {isEditing ? (
                 <form className="edit-comment-form" onSubmit={updateComment}>
                     <input

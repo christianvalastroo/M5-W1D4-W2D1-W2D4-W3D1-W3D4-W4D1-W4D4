@@ -1,10 +1,20 @@
 .single-comment {
-    background: white;
     padding: 0.75rem;
     border-radius: 10px;
     margin-bottom: 0.75rem;
     border: 1px solid #eee;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.single-comment-light {
+    background: white;
+    color: #212529;
+}
+
+.single-comment-dark {
+    background: #2b2b2b;
+    border-color: #3f3f3f;
+    color: #f8f9fa;
 }
 
 .single-comment:hover {

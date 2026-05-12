@@ -1,13 +1,16 @@
-import Card from 'react-bootstrap/Card';
-import './SingleBook.css';
+import { useContext } from "react"
+import Card from "react-bootstrap/Card"
+import { ThemeHome } from "../../context/ThemeHome/ThemeHome"
+import "./SingleBook.css"
 
 const SingleBook = (props) => {
+    const { theme } = useContext(ThemeHome)
 
     return (
         <>
 
             <Card
-                className={`book-card ${props.selected === props.asin ? "selected" : ""}`}
+                className={`book-card ${props.selected === props.asin ? "selected" : ""} ${theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"}`}
                 onClick={() => props.setSelected(props.asin)}
             >
 

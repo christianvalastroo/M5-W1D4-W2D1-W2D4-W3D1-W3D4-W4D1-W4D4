@@ -2,9 +2,12 @@ import { Component } from "react"
 import CommentsList from "../CommentList/CommentList"
 import AddComment from "../AddComment/AddComment"
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner"
+import { ThemeHome } from "../../context/ThemeHome/ThemeHome"
 import "./CommentArea.css"
 
 class CommentArea extends Component {
+    static contextType = ThemeHome
+
     // Mantiene la lista dei commenti e lo stato di caricamento.
     state = {
         comments: [],
@@ -45,8 +48,10 @@ class CommentArea extends Component {
     }
 
     render() {
+        const { theme } = this.context
+
         return (
-            <div className="comment-area">
+            <div className={`comment-area ${theme === "dark" ? "comment-area-dark" : "comment-area-light"}`}>
                 <h5>Recensioni del libro</h5>
 
                 {/* Mostra un messaggio, il loader oppure la lista dei commenti. */}

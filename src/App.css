@@ -2,8 +2,20 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.app-light {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+.app-dark {
+    background-color: #121212;
+    color: #f8f9fa;
 }
 
 .main-content {
     flex: 1;
+    padding-bottom: 2rem;
 }
