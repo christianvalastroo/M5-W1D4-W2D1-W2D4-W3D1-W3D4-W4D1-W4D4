@@ -28,7 +28,7 @@ const AllTheBooks = ({ search }) => {
                         {filteredBooks.length > 0 ? (
 
                             filteredBooks.map((book) => (
-                                <Col md={3} key={book.asin}>
+                                <Col xs={12} sm={6} md={4} lg={3} className="d-flex" key={book.asin}>
 
                                     <SingleBook
                                         img={book.img}

@@ -51,8 +51,8 @@ class CommentArea extends Component {
         const { theme } = this.context
 
         return (
-            <div className={`comment-area ${theme === "dark" ? "comment-area-dark" : "comment-area-light"}`}>
-                <h5>Recensioni del libro</h5>
+            <div className={`comment-area mt-3 p-3 rounded border ${theme === "dark" ? "comment-area-dark" : "bg-light text-dark"}`}>
+                <h5 className="fw-bold mb-3">Recensioni del libro</h5>
 
                 {/* Mostra un messaggio, il loader oppure la lista dei commenti. */}
                 {!this.props.selected ? (

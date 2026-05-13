@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Button, Form } from "react-bootstrap"
 import "./AddComment.css"
 
 const AddComment = ({ selected, refreshComments }) => {
@@ -41,9 +42,8 @@ const AddComment = ({ selected, refreshComments }) => {
     }
 
     return (
-        <form className="add-comment-form" onSubmit={handleSubmit}>
-            <input
-                className="add-comment-input"
+        <Form className="mt-3 d-flex flex-column gap-3" onSubmit={handleSubmit}>
+            <Form.Control
                 type="text"
                 placeholder="Scrivi una recensione"
                 value={newComment.comment}
@@ -76,10 +76,10 @@ const AddComment = ({ selected, refreshComments }) => {
                 ))}
             </div>
 
-            <button className="add-comment-btn" type="submit">
+            <Button variant="primary" type="submit">
                 Invia
-            </button>
-        </form>
+            </Button>
+        </Form>
     )
 }
 

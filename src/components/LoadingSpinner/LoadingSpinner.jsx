@@ -1,12 +1,11 @@
 import Spinner from "react-bootstrap/Spinner"
-import "./LoadingSpinner.css"
 
 const LoadingSpinner = () => {
     return (
-        <div className="loading-container">
+        <div className="text-center p-3">
             <Spinner animation="border" role="status" />
 
-            <p className="loading-text">
+            <p className="mt-2 fw-bold">
                 Caricamento...
             </p>
         </div>

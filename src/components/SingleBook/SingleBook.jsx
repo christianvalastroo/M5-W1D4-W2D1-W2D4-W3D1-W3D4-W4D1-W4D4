@@ -10,7 +10,7 @@ const SingleBook = (props) => {
         <>
 
             <Card
-                className={`book-card ${props.selected === props.asin ? "selected" : ""} ${theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"}`}
+                className={`book-card h-100 w-100 d-flex flex-column ${props.selected === props.asin ? "selected" : ""} ${theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"}`}
                 onClick={() => props.setSelected(props.asin)}
             >
 
@@ -20,12 +20,12 @@ const SingleBook = (props) => {
                     src={props.img}
                 />
 
-                <Card.Body className="book-body">
-                    <Card.Title className="book-title">
+                <Card.Body className="d-flex flex-column flex-grow-1 gap-2">
+                    <Card.Title className="book-title" title={props.title}>
                         {props.title}
                     </Card.Title>
 
-                    <Card.Text className="book-price">
+                    <Card.Text className="mt-auto mb-0 fw-bold text-success">
                         {props.price} €
                     </Card.Text>
                 </Card.Body>

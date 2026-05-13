@@ -1,14 +1,5 @@
 .comment-area {
-    margin-top: 1rem;
-    padding: 1rem;
-    border-radius: 12px;
-    border: 1px solid #e5e5e5;
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-.comment-area-light {
-    background-color: #f8f9fa;
-    color: #212529;
 }
 
 .comment-area-dark {
@@ -17,19 +8,13 @@
     color: #f8f9fa;
 }
 
-.comment-area h5 {
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.comment-area-dark .add-comment-input,
-.comment-area-dark .edit-comment-input,
-.comment-area-dark .edit-comment-select {
+.comment-area-dark .form-control,
+.comment-area-dark .form-select {
     background-color: #2b2b2b;
     border-color: #495057;
     color: #f8f9fa;
 }
 
-.comment-area-dark .add-comment-input::placeholder {
+.comment-area-dark .form-control::placeholder {
     color: #adb5bd;
 }

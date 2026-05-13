@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+import { Button, Form } from "react-bootstrap"
 import { ThemeHome } from "../../context/ThemeHome/ThemeHome"
 import "./SingleComment.css"
 
@@ -61,11 +62,10 @@ const SingleComment = ({ comment, refreshComments }) => {
     }
 
     return (
-        <div className={`single-comment ${theme === "dark" ? "single-comment-dark" : "single-comment-light"}`}>
+        <div className={`single-comment p-3 mb-3 rounded border ${theme === "dark" ? "single-comment-dark" : "bg-white text-dark"}`}>
             {isEditing ? (
-                <form className="edit-comment-form" onSubmit={updateComment}>
-                    <input
-                        className="edit-comment-input"
+                <Form className="d-flex flex-column gap-2" onSubmit={updateComment}>
+                    <Form.Control
                         type="text"
                         value={editedComment.comment}
                         onChange={(e) =>
@@ -76,8 +76,7 @@ const SingleComment = ({ comment, refreshComments }) => {
                         }
                     />
 
-                    <select
-                        className="edit-comment-select"
+                    <Form.Select
                         value={editedComment.rate}
                         onChange={(e) =>
                             setEditedComment({
@@ -91,38 +90,40 @@ const SingleComment = ({ comment, refreshComments }) => {
                         <option value="3">3 stelle</option>
                         <option value="4">4 stelle</option>
                         <option value="5">5 stelle</option>
-                    </select>
+                    </Form.Select>
 
-                    <div className="comment-actions">
-                        <button className="save-comment-btn" type="submit">
+                    <div className="d-flex gap-2 flex-wrap">
+                        <Button variant="success" size="sm" type="submit">
                             Salva
-                        </button>
+                        </Button>
 
-                        <button
-                            className="cancel-comment-btn"
+                        <Button
+                            variant="secondary"
+                            size="sm"
                             type="button"
                             onClick={cancelEdit}
                         >
                             Annulla
-                        </button>
+                        </Button>
                     </div>
-                </form>
+                </Form>
             ) : (
                 <>
-                    <p className="comment-text">{comment.comment}</p>
-                    <p className="comment-rate">⭐ {comment.rate}</p>
+                    <p className="mb-1">{comment.comment}</p>
+                    <p className="comment-rate mb-2">⭐ {comment.rate}</p>
 
-                    <div className="comment-actions">
-                        <button
-                            className="edit-comment-btn"
+                    <div className="d-flex gap-2 flex-wrap">
+                        <Button
+                            variant="primary"
+                            size="sm"
                             onClick={() => setIsEditing(true)}
                         >
                             Modifica
-                        </button>
+                        </Button>
 
-                        <button className="delete-comment-btn" onClick={deleteComment}>
+                        <Button variant="danger" size="sm" onClick={deleteComment}>
                             Elimina
-                        </button>
+                        </Button>
                     </div>
                 </>
             )}
