@@ -16,14 +16,11 @@ import NotFound from "./components/NotFound/NotFound"
 
 
 const AppContent = () => {
-  // Stato usato dalla navbar per filtrare i libri.
   const [search, setSearch] = useState("")
   const { theme } = useContext(ThemeHome)
 
   return (
     <div className={`app-wrapper ${theme === "dark" ? "app-dark" : "app-light"}`}>
-      {/* Navbar principale del sito. */}
-
       <MyNav
         search={search}
         setSearch={setSearch}
@@ -32,7 +29,6 @@ const AppContent = () => {
       <main className="main-content">
         <Welcome />
 
-        {/* Rotte principali dell'app: home, dettaglio libro e pagina 404. */}
         <Routes>
           <Route path="/" element={<AllTheBooks search={search} />} />
           <Route path="/book/:asin" element={<BookDetails />} />
