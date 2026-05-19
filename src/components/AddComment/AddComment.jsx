@@ -11,6 +11,7 @@ const AddComment = ({ selected, refreshComments }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        // L'API richiede elementId per collegare la recensione al libro selezionato.
         const commentToSend = {
             ...newComment,
             elementId: selected
@@ -32,6 +33,7 @@ const AddComment = ({ selected, refreshComments }) => {
             })
             .then((data) => {
                 console.log("Commento salvato:", data)
+                // Dopo il salvataggio ricarico la lista e svuoto il form.
                 refreshComments()
                 setNewComment({
                     comment: "",

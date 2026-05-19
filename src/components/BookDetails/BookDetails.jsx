@@ -8,8 +8,11 @@ import { ThemeHome } from "../../context/ThemeHome/ThemeHome"
 const BookDetails = () => {
     const { asin } = useParams()
     const { theme } = useContext(ThemeHome)
+
+    // Trova il libro usando l'asin ricevuto dalla rotta /book/:asin.
     const book = fantasy.find((book) => book.asin === asin)
 
+    // Mostra un messaggio chiaro se l'asin non corrisponde a nessun libro.
     if (!book) {
         return (
             <Container>
@@ -35,6 +38,7 @@ const BookDetails = () => {
                 </Card.Body>
             </Card>
 
+            {/* Carica le recensioni del libro visualizzato. */}
             <CommentArea selected={book.asin} />
         </Container>
     )

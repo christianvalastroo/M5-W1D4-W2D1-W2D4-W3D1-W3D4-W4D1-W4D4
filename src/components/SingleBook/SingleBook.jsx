@@ -12,6 +12,7 @@ const SingleBook = (props) => {
     return (
         <>
 
+            {/* Salvo l'asin cliccato nel componente padre per evidenziare solo questa card. */}
             <Card
                 className={`book-card h-100 w-100 d-flex flex-column ${props.selected === props.asin ? "selected" : ""} ${theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"}`}
                 onClick={() => props.setSelected(props.asin)}

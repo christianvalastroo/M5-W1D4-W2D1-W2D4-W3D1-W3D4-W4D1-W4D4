@@ -16,6 +16,7 @@ import NotFound from "./components/NotFound/NotFound"
 
 
 const AppContent = () => {
+  // La ricerca vive qui perché navbar e lista libri devono condividere lo stesso valore.
   const [search, setSearch] = useState("")
   const { theme } = useContext(ThemeHome)
 
@@ -45,6 +46,7 @@ const AppContent = () => {
 const App = () => {
   return (
     <BrowserRouter>
+      {/* Il provider espone tema e toggle a tutta l'app. */}
       <ThemeProvider>
         <AppContent />
       </ThemeProvider>
