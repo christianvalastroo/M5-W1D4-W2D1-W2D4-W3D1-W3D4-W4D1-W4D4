@@ -19,10 +19,13 @@ const BookDetails = () => {
     }
 
     return (
-        <Container>
-            <h1>Dettaglio libro</h1>
+        <Container className="py-4 text-center">
+            <h1 className="mb-4">Dettaglio libro</h1>
 
-            <Card className={theme === "dark" ? "bg-dark text-light border-secondary" : "bg-light text-dark"}>
+            <Card
+                className={theme === "dark" ? "bg-dark text-light border-secondary" : "bg-light text-dark mx-auto mt-4"}
+                style={{ maxWidth: "450px" }}
+            >
                 <Card.Img variant="top" src={book.img} />
                 <Card.Body>
                     <Card.Title>{book.title}</Card.Title>
