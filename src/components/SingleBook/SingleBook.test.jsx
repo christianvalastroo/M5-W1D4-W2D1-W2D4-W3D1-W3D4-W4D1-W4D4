@@ -76,4 +76,27 @@ describe("SingleBook component", () => {
 
         expect(button).toHaveAttribute("href", "/book/123")
     })
+
+    it("should add selected class when book is selected", () => {
+        render(
+            <BrowserRouter>
+                <ThemeProvider>
+                    <SingleBook
+                        title="Libro test"
+                        img="https://picsum.photos/200/300"
+                        price={20}
+                        asin="123"
+                        selected="123"
+                        setSelected={() => { }}
+                    />
+                </ThemeProvider>
+            </BrowserRouter>
+        )
+
+        const title = screen.getByText("Libro test")
+
+        const card = title.closest(".book-card")
+
+        expect(card).toHaveClass("selected")
+    })
 })
