@@ -99,4 +99,49 @@ describe("SingleBook component", () => {
 
         expect(card).toHaveClass("selected")
     })
+
+    it("should add selected class when clicked", async () => {
+
+        const mockSetSelected = vi.fn()
+
+        const { rerender } = render(
+            <BrowserRouter>
+                <ThemeProvider>
+                    <SingleBook
+                        title="Libro test"
+                        img="https://picsum.photos/200/300"
+                        price={20}
+                        asin="123"
+                        selected={null}
+                        setSelected={mockSetSelected}
+                    />
+                </ThemeProvider>
+            </BrowserRouter>
+        )
+
+        const title = screen.getByText("Libro test")
+
+        const card = title.closest(".book-card")
+
+        expect(card).not.toHaveClass("selected")
+
+        await userEvent.click(card)
+
+        rerender(
+            <BrowserRouter>
+                <ThemeProvider>
+                    <SingleBook
+                        title="Libro test"
+                        img="https://picsum.photos/200/300"
+                        price={20}
+                        asin="123"
+                        selected="123"
+                        setSelected={mockSetSelected}
+                    />
+                </ThemeProvider>
+            </BrowserRouter>
+        )
+
+        expect(card).toHaveClass("selected")
+    })
 })
