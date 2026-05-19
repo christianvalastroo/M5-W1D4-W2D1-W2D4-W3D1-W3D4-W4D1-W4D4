@@ -16,4 +16,17 @@ describe("CommentArea component", () => {
 
         expect(title).toBeInTheDocument()
     })
+
+    it("should not render comments at startup", () => {
+
+        render(
+            <ThemeProvider>
+                <CommentArea selected={null} />
+            </ThemeProvider>
+        )
+
+        const comment = screen.queryByText(/commento/i)
+
+        expect(comment).not.toBeInTheDocument()
+    })
 })
